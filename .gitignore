@@ -1,0 +1,5 @@
+/target/
+/.settings/
+/.classpath
+/.project
+/impala-tests-0.0.1-SNAPSHOT.jar
