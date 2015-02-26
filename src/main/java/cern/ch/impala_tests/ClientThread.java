@@ -1,5 +1,6 @@
 package cern.ch.impala_tests;
 
+import java.sql.SQLException;
 import java.util.Random;
 
 public class ClientThread extends Thread {
@@ -29,7 +30,13 @@ public class ClientThread extends Thread {
 			ImpalaClient client = new ImpalaClient(clients[randomGenerator.nextInt(clients.length)]);
 			
 			int q_i = randomGenerator.nextInt(queries.length);
-			long time = client.runQuery(queries[q_i]);
+			long time = System.currentTimeMillis();
+			try {
+				client.runQuery(queries[q_i]);
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			time = System.currentTimeMillis() - time;
 			
 			System.out.println("Thread = " + num_thread
 					+" Node = "+client.getHostname()

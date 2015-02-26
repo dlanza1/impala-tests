@@ -37,37 +37,27 @@ public class ImpalaClient {
 		}		
 	}
 	
-	public long runQuery(String statement){
-		try{
-			Statement stmt = con.createStatement();
+	public ResultSet runQuery(String statement) throws SQLException{
+		
+		Statement stmt = con.createStatement();
 	
-//			System.out.println("Running Query: " + statement);
-			long t = System.currentTimeMillis();
-			
-			ResultSet rs = stmt.executeQuery(statement + "");
+		System.out.println("Running Query: " + statement);
+		
+		return stmt.executeQuery(statement + "");
 	
 //			System.out.println("\n== Begin Query Results ==");
 			
 			// print the results to the console
-			while (rs.next()) {
+//			while (rs.next()) {
 				// the example query returns one String column
 //				System.out.print(rs.getString(1));
 //				System.out.print(" | ");
 //				System.out.print(rs.getString(2));
 //				System.out.print(" | ");
 //				System.out.println(rs.getString(3));
-			}
+//			}
 	
 //			System.out.println("== End Query Results == " + (System.currentTimeMillis() - t) + " ms\n\n");
-			
-			return System.currentTimeMillis() - t;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}	
-		
-		return -1;
 	}
 	
 	public void close(){
