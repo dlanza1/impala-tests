@@ -1,5 +1,6 @@
 package cern.ch.impala_tests;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -32,7 +33,11 @@ public class ClientThread extends Thread {
 			int q_i = randomGenerator.nextInt(queries.length);
 			long time = System.currentTimeMillis();
 			try {
-				client.runQuery(queries[q_i]);
+				ResultSet rs = client.runQuery(queries[q_i]);
+				
+				while(rs.next());
+				
+				rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

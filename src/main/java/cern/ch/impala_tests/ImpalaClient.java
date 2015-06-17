@@ -22,7 +22,7 @@ public class ImpalaClient {
 	public ImpalaClient(String host, int port){
 		this.hostname = host;
 		
-		String connection_url = "jdbc:hive2://" + host + ':' + port + "/;auth=noSasl";
+		String connection_url = "jdbc:hive2://" + host + ':' + port + "/;auth=noSasl;user=root";
 
 //		System.out.println("Connecting: " + connection_url);
 		

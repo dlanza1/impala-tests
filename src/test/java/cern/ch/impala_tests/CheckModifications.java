@@ -17,9 +17,10 @@ public class CheckModifications {
 		// c_mod = new ImpalaClient("itrac925");
 		// c_ori = new ImpalaClient("itrac926");
 
-		// External tests
+		// External tests run:
 		// ssh dlanza@lxplus.cern.ch -L 21051:itrac925.cern.ch:21050 -N
 		// ssh dlanza@lxplus.cern.ch -L 21050:itrac926.cern.ch:21050 -N
+		
 		c_mod = new ImpalaClient("localhost", 21051);
 		c_ori = new ImpalaClient("localhost", 21050);
 	}
